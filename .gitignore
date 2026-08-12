@@ -1,0 +1,15 @@
+# Dépendances
+node_modules/
+
+# Fichiers de build
+dist/
+.astro/
+.next/
+
+# Variables d'environnement / Secrets
+.env
+.env*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
