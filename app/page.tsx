@@ -10,7 +10,7 @@ export default async function Homepage() {
       <h1>Keystatic ⚡️</h1>
       <p>This homepage shows how to load a collection from the reader API.</p>
       <p>
-        <a href="/keystatic">Click here to visit the Admin UI</a>, or the link
+        <Link href="/keystatic">Click here to visit the Admin UI</Link>, or the link
         below to view a post in the collection.
       </p>
       <h2>Posts</h2>
