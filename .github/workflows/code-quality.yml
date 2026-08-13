@@ -1,0 +1,53 @@
+name: 🔎 Code Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+jobs:
+  linter:
+    name: 🧹 Linter
+    if: github.event.pull_request.draft == false
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: ./.github/actions/setup-pnpm
+
+      - name: Run ESLint
+        run: pnpm eslint .
+
+  typescriptChecker:
+    name: 🟦 TypeScript Checker
+    if: github.event.pull_request.draft == false
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: ./.github/actions/setup-pnpm
+
+      - name: Run Typescript checker
+        run: pnpm tsc --noEmit
+
+  tests:
+    name: 🔬 Playwright Tests
+    if: github.event.pull_request.draft == false
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: ./.github/actions/setup-pnpm
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: pnpm exec playwright test
