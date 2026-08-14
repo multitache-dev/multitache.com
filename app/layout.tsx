@@ -1,9 +1,8 @@
-import type { ReactNode } from 'react';
+import type { ReactNode } from "react";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

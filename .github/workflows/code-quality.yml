@@ -14,12 +14,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: ./.github/actions/setup-pnpm
 
-      - name: Run ESLint
-        run: pnpm eslint .
+      - name: Run Oxlint
+        run: pnpm lint
+
+      - name: Check Formatting
+        run: pnpm exec oxfmt --check
 
   typescriptChecker:
     name: 🟦 TypeScript Checker
@@ -28,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: ./.github/actions/setup-pnpm
 
@@ -42,7 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup pnpm
         uses: ./.github/actions/setup-pnpm
 
