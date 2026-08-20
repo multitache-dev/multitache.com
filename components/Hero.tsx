@@ -7,7 +7,7 @@ import Logo from "./Logo";
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[90vh] min-h-[600px] overflow-hidden flex flex-col items-center justify-center">
+    <section className="hero-v-shape relative w-full h-[90vh] min-h-[600px] overflow-hidden flex flex-col items-center justify-center">
       {/* ── Background Video — plein écran, avec léger overlay sombre ── */}
       <div className="absolute inset-0 z-0 bg-black">
         <video
@@ -75,22 +75,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── V-shape bottom cut-out overlay ── */}
-      <div className="absolute bottom-0 left-0 w-full z-10 pointer-events-none leading-none">
-        <svg
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-16 md:h-24 lg:h-32 drop-shadow-sm"
-          preserveAspectRatio="none"
-        >
-          <path d="M0,120 L0,0 L720,120 L1440,0 L1440,120 Z" fill="#ffffff" />
-        </svg>
-
-        {/* Bouncing down arrow positioned near the vertex */}
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown size={32} className="text-[#2563B0] drop-shadow-md" />
-        </div>
+      {/* Bouncing down arrow positioned near the vertex */}
+      <div className="absolute bottom-3 md:bottom-5 left-1/2 -translate-x-1/2 animate-bounce z-20 pointer-events-none">
+        <ChevronDown size={32} className="text-[#2563B0] drop-shadow-md" />
       </div>
     </section>
   );

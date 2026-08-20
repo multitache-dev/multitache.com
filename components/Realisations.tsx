@@ -32,10 +32,10 @@ const realisations: RealisationItem[] = [
 
 export default function Realisations() {
   return (
-    <section className="w-full py-8 md:py-16 px-4 sm:px-6 bg-gradient-to-b from-white to-[#e8f0e5]">
+    <section className="w-full py-8 md:py-16 px-4 sm:px-6 bg-transparent">
       <div className="max-w-7xl mx-auto">
         {/* Big Card Container */}
-        <div className="bg-white rounded-[32px] sm:rounded-[36px] p-6 sm:p-10 md:p-12 shadow-sm border border-[#dce5d7]">
+        <div className="bg-white rounded-[32px] sm:rounded-[36px] p-6 sm:p-10 md:p-12 shadow-sm border border-[#bbcda8]/60">
         {/* Section Header */}
         <div className="mb-8">
           <h2 className="section-title text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f3021] tracking-tight mb-2">

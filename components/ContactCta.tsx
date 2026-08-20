@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function ContactCta() {
   return (
-    <section id="contact" className="w-full py-12 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-[#e8f0e5] to-white">
+    <section id="contact" className="w-full py-12 md:py-20 px-4 sm:px-6 bg-transparent">
       <div className="max-w-5xl mx-auto">
-        <div className="rounded-[28px] sm:rounded-[34px] bg-[#cad8c5] p-8 sm:p-12 md:p-14 text-center shadow-sm border border-[#c4d6bd]/60">
+        <div className="rounded-[28px] sm:rounded-[34px] bg-[#bbcda8] p-8 sm:p-12 md:p-14 text-center shadow-sm border border-[#a8be95]/70">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f3021] tracking-tight mb-3">
           Nous contacter
         </h2>

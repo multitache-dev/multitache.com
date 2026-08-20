@@ -23,11 +23,14 @@ export default function Homepage() {
       <Navbar />
 
       <main className="flex-1">
-        {/* 2. Hero (Image 3 / screenshot) */}
-        <Hero />
+        {/* Dégradé continu : Vert sauge exact (#bbcda8) → transition douce → blanc pur */}
+        <div className="w-full bg-gradient-to-b from-[#bbcda8] via-[#dde8d5] via-50% to-white">
+          {/* 2. Hero */}
+          <Hero />
 
-        {/* 3. Nos Rénovations (Image 2) */}
-        <Renovations />
+          {/* 3. Nos Rénovations */}
+          <Renovations />
+        </div>
 
         {/* 4. Qui Sommes-Nous & Carte (Image 3) */}
         <AboutMap />
@@ -35,11 +38,14 @@ export default function Homepage() {
         {/* 5. Comment ça marche */}
         <HowItWorks />
 
-        {/* 6. Nos Dernières Réalisations (Image 4) */}
-        <Realisations />
+        {/* 6. Zone Nos Dernières Réalisations + Contact CTA avec dégradé continu */}
+        <div className="w-full bg-gradient-to-b from-white via-[#bbcda8]/40 via-45% to-white">
+          {/* Nos Dernières Réalisations */}
+          <Realisations />
 
-        {/* 6. Contact CTA (Image 5) */}
-        <ContactCta />
+          {/* Contact CTA */}
+          <ContactCta />
+        </div>
       </main>
 
       {/* 7. Footer */}

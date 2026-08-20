@@ -22,19 +22,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  /* Fond principal dégradé : vert sauge → blanc → vert sauge */
-  background: linear-gradient(
-    180deg,
-    #d6e8cc 0%,
-    #e6f0e2 8%,
-    #f2f7ef 18%,
-    #ffffff 35%,
-    #f5f9f3 55%,
-    #e8efe4 72%,
-    #dcebd6 88%,
-    #d0e3c8 100%
-  );
-  background-attachment: local;
+  background-color: #ffffff;
   color: #1f3021;
   min-height: 100vh;
 }
@@ -49,7 +37,7 @@ body {
   --color-primary-hover: #1d4f96;
   --color-accent-yellow: #f1b82d;
   --color-accent-yellow-hover: #e0aa24;
-  --color-sage-bg: #e8efe4;
+  --color-sage-bg: #bbcda8;
   --color-dark-green: #1f3021;
 }
 
@@ -97,6 +85,16 @@ body {
 
 .hero-logo-anim {
   animation: fadeSlideDown 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-v-shape {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - clamp(40px, 6vw, 100px)),
+    50% 100%,
+    0 calc(100% - clamp(40px, 6vw, 100px))
+  );
 }
 
 h1.hero-title {
