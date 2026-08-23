@@ -6,20 +6,20 @@
 
 ## Stack technique
 
-| Couche         | Technologie                                                          |
-| -------------- | -------------------------------------------------------------------- |
-| Framework      | [Next.js 16](https://nextjs.org/) (App Router, React 19, RSC)       |
-| Langage        | TypeScript 7                                                         |
-| Styling        | Tailwind CSS 4 (via PostCSS)                                         |
-| Composants UI  | [shadcn/ui](https://ui.shadcn.com/) (style `base-nova`, Base UI)     |
-| Icônes         | Lucide React                                                         |
-| CMS            | [Keystatic](https://keystatic.com/) (stockage local, format Markdoc) |
-| Rendu contenu  | Markdoc                                                              |
-| Tests E2E      | Playwright (Chromium, Firefox, WebKit)                                |
-| Linter         | Oxlint                                                               |
-| Formatter      | Oxfmt                                                                |
-| Package mgr    | pnpm (workspace)                                                     |
-| CI             | GitHub Actions (lint, type-check, tests Playwright)                  |
+| Couche        | Technologie                                                          |
+| ------------- | -------------------------------------------------------------------- |
+| Framework     | [Next.js 16](https://nextjs.org/) (App Router, React 19, RSC)        |
+| Langage       | TypeScript 7                                                         |
+| Styling       | Tailwind CSS 4 (via PostCSS)                                         |
+| Composants UI | [shadcn/ui](https://ui.shadcn.com/) (style `base-nova`, Base UI)     |
+| Icônes        | Lucide React                                                         |
+| CMS           | [Keystatic](https://keystatic.com/) (stockage local, format Markdoc) |
+| Rendu contenu | Markdoc                                                              |
+| Tests E2E     | Playwright (Chromium, Firefox, WebKit)                               |
+| Linter        | Oxlint                                                               |
+| Formatter     | Oxfmt                                                                |
+| Package mgr   | pnpm (workspace)                                                     |
+| CI            | GitHub Actions (lint, type-check, tests Playwright)                  |
 
 ## Architecture du site
 
@@ -66,12 +66,12 @@ multitache.com/
 
 ## Endpoints utiles
 
-| URL                                                                           | Description                        |
-| ----------------------------------------------------------------------------- | ---------------------------------- |
-| [localhost:3000](http://localhost:3000)                                        | Page d'accueil                     |
-| [localhost:3000/keystatic](http://localhost:3000/keystatic)                    | 🔧 Interface d'administration CMS |
-| [localhost:3000/{slug}](http://localhost:3000/{slug})                          | Page d'un article (ex: `/first-post`) |
-| [localhost:3000/api/keystatic/[...params]](http://localhost:3000/api/keystatic)| API interne de Keystatic           |
+| URL                                                                             | Description                           |
+| ------------------------------------------------------------------------------- | ------------------------------------- |
+| [localhost:3000](http://localhost:3000)                                         | Page d'accueil                        |
+| [localhost:3000/keystatic](http://localhost:3000/keystatic)                     | 🔧 Interface d'administration CMS     |
+| [localhost:3000/{slug}](http://localhost:3000/{slug})                           | Page d'un article (ex: `/first-post`) |
+| [localhost:3000/api/keystatic/[...params]](http://localhost:3000/api/keystatic) | API interne de Keystatic              |
 
 ## Démarrage rapide
 
@@ -90,13 +90,13 @@ Le site est disponible sur **http://localhost:3000**.
 
 ## Scripts disponibles
 
-| Commande         | Description                          |
-| ---------------- | ------------------------------------ |
-| `pnpm dev`       | Serveur de développement Next.js     |
-| `pnpm build`     | Build de production                  |
-| `pnpm start`     | Serveur de production (après build)  |
-| `pnpm lint`      | Lancer Oxlint                        |
-| `pnpm format`    | Formater le code avec Oxfmt          |
+| Commande      | Description                         |
+| ------------- | ----------------------------------- |
+| `pnpm dev`    | Serveur de développement Next.js    |
+| `pnpm build`  | Build de production                 |
+| `pnpm start`  | Serveur de production (après build) |
+| `pnpm lint`   | Lancer Oxlint                       |
+| `pnpm format` | Formater le code avec Oxfmt         |
 
 ## Tests
 
