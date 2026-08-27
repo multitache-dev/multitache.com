@@ -10,8 +10,8 @@ const steps = [
     label: "Étape 1",
     title: "Prise de contact",
     description:
-      "Appelez-nous ou remplissez le formulaire. Un artisan vous rappelle sous 24h pour cadrer votre projet — gratuitement, sans engagement.",
-    tag: "Réponse < 24h",
+      "Appelez-nous ou remplissez le formulaire. Un artisan échange avec vous pour cadrer votre projet — gratuitement et sans engagement.",
+    tag: "Premier contact",
     accent: "#bbcda8",
     accentText: "#2e4a2f",
     position: "top", // above the wave
@@ -22,8 +22,8 @@ const steps = [
     label: "Étape 2",
     title: "Devis & planification",
     description:
-      "Votre interlocuteur unique se déplace, chiffre chaque poste et vous remet un devis détaillé sous 48h. Planning et matériaux validés ensemble.",
-    tag: "Devis sous 48h",
+      "Votre interlocuteur unique se déplace, chiffre chaque poste et vous remet un devis détaillé. Planning et matériaux validés ensemble.",
+    tag: "Devis sur mesure",
     accent: "#2563B0",
     accentText: "#ffffff",
     position: "bottom", // below the wave

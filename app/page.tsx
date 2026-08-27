@@ -6,7 +6,7 @@ import AboutMap from "@/components/AboutMap";
 import Realisations from "@/components/Realisations";
 import HowItWorks from "@/components/HowItWorks";
 import ContactCta from "@/components/ContactCta";
-import Footer from "@/components/Footer";
+import Footer from "@/components/footer";
 import GoogleReviewsBadge from "@/components/GoogleReviewsBadge";
 import SectionTitleObserver from "@/components/SectionTitleObserver";
 

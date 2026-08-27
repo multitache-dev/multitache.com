@@ -13,23 +13,28 @@ interface RenovationCardProps {
 
 const renovationItems: RenovationCardProps[] = [
   {
-    title: "PLOMBERIE & SALLE DE BAINS",
-    imageSrc: "/images/hands_plumbing.jpg",
+    title: "PLOMBERIE",
+    imageSrc: "/images/Pompe à chaleur + chauffe eau thermodynamique.jpg",
     link: "#contact",
   },
   {
-    title: "ÉLECTRICITÉ & SANITAIRES",
-    imageSrc: "/images/hands_electrician.jpg",
+    title: "CLIMATISATION",
+    imageSrc: "/images/Clim.jpg",
     link: "#contact",
   },
   {
-    title: "PEINTURE & FINITIONS",
-    imageSrc: "/images/hands_painting.jpg",
+    title: "ÉLECTRICITÉ",
+    imageSrc: "/images/Tableau 2.jpg",
     link: "#contact",
   },
   {
-    title: "CLIMATISATION & POMPE À CHALEUR",
-    imageSrc: "/images/hands_ac_heat_pump.jpg",
+    title: "MENUISERIE",
+    imageSrc: "/images/Porte fenêtre.jpg",
+    link: "#contact",
+  },
+  {
+    title: "PEINTURE & FINITION",
+    imageSrc: "/images/Peinture.jpg",
     link: "#contact",
   },
 ];
@@ -43,17 +48,17 @@ export default function Renovations() {
           Nos rénovations
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-[#3d5040] max-w-3xl">
-          Quatre grandes familles de travaux. Choisissez la vôtre pour découvrir
+          Cinq grands domaines de travaux. Choisissez le vôtre pour découvrir
           les prestations et les chantiers déjà réalisés.
         </p>
       </div>
 
-      {/* 4 Cards Grid - Added 'group/grid' for the blur siblings effect */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 group/grid">
+      {/* 5 Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
         {renovationItems.map((item, index) => (
           <div
             key={index}
-            className="group/card relative h-[380px] sm:h-[420px] rounded-[28px] overflow-hidden border border-green-500/10 shadow-[0_0_15px_rgba(34,197,94,0.08)] transition-all duration-300 ease-out transform flex flex-col justify-between p-6 group-hover/grid:blur-[4px] group-hover/grid:scale-[0.98] hover:!blur-none hover:!scale-105 hover:shadow-[0_0_25px_rgba(34,197,94,0.20)] hover:z-10"
+            className="group/card relative h-[360px] sm:h-[400px] rounded-[24px] overflow-hidden border border-green-500/10 shadow-[0_0_15px_rgba(34,197,94,0.08)] transition-all duration-300 ease-out transform flex flex-col justify-between p-5 hover:scale-105 hover:shadow-[0_15px_30px_rgba(34,197,94,0.20)] hover:z-10 cursor-pointer"
           >
             {/* Background Image */}
             <Image
@@ -63,12 +68,12 @@ export default function Renovations() {
               className="object-cover object-center transition-transform duration-500 ease-out"
             />
 
-            {/* Gradient for text readability (green filter removed) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/10 to-black/70 pointer-events-none" />
+            {/* Gradient for text readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/75 pointer-events-none" />
 
             {/* Top Title */}
-            <div className="relative z-10 text-center pt-2">
-              <h3 className="text-white font-bold text-base sm:text-lg tracking-wider uppercase drop-shadow-md leading-snug">
+            <div className="relative z-10 text-center pt-1">
+              <h3 className="text-white font-bold text-sm sm:text-base tracking-wider uppercase drop-shadow-md leading-snug">
                 {item.title}
               </h3>
             </div>
@@ -77,10 +82,10 @@ export default function Renovations() {
             <div className="relative z-10 flex justify-start">
               <Link
                 href={item.link}
-                className="inline-flex items-center gap-2.5 bg-[#316bb3] hover:bg-[#255894] text-white pl-1.5 pr-4 py-1.5 rounded-full text-xs font-semibold shadow-md transition-all group-hover:shadow-lg"
+                className="inline-flex items-center gap-2 bg-[#316bb3] hover:bg-[#255894] text-white pl-1.5 pr-3.5 py-1 rounded-full text-[11px] sm:text-xs font-semibold shadow-md transition-all group-hover:shadow-lg"
               >
-                <span className="w-6 h-6 rounded-full bg-[#f1b82d] flex items-center justify-center text-[#1f3021] shrink-0">
-                  <ArrowRight size={13} strokeWidth={2.5} />
+                <span className="w-5 h-5 rounded-full bg-[#f1b82d] flex items-center justify-center text-[#1f3021] shrink-0">
+                  <ArrowRight size={11} strokeWidth={2.5} />
                 </span>
                 <span>En savoir +</span>
               </Link>

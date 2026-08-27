@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Phone, Send, ChevronDown } from "lucide-react";
-import Logo from "./Logo";
+import Logo from "./logo";
 
 export default function Hero() {
   return (
@@ -37,7 +37,7 @@ export default function Hero() {
           <span className="block">MULTITÂCHE, artisan dans le</span>
           <span className="block">bâtiment</span>
           <span className="hero-subtitle-span block mt-1 text-[#2563B0]">
-            à Villard-Bonnot
+            dans le Grésivaudan
           </span>
         </h1>
 

@@ -12,19 +12,19 @@ interface RealisationItem {
 const realisations: RealisationItem[] = [
   {
     title: "Douche italienne sur mesure — Villard-Bonnot",
-    imageSrc: "/images/douche-2.jpg",
+    imageSrc: "/images/Douche 2.jpg",
     description:
       "Rénovation complète de la salle d'eau : création d'une douche italienne moderne avec faïence grand format et niche encastrée.",
   },
   {
     title: "Habillage mural tasseaux — Froges",
-    imageSrc: "/images/finition-bois.jpg",
+    imageSrc: "/images/Finition murale (habillage bois).jpg",
     description:
       "Pose d'un revêtement mural décoratif en tasseaux de bois naturel et finitions de peinture assorties.",
   },
   {
     title: "Pompe à chaleur & Chauffe-eau — Le Versoud",
-    imageSrc: "/images/pompe-chaleur.jpg",
+    imageSrc: "/images/Pompe à chaleur Air-Eau.jpg",
     description:
       "Installation d'une pompe à chaleur réversible et d'un chauffe-eau thermodynamique pour un confort optimal.",
   },

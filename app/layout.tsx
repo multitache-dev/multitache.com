@@ -12,7 +12,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "MULTITÂCHE - Artisan dans le bâtiment à Villard-Bonnot",
+  title: "MULTITÂCHE - Artisan dans le bâtiment dans le Grésivaudan",
   description:
     "Plomberie, électricité, peinture et climatisation : une seule équipe pour toute votre rénovation dans le Grésivaudan (Villard-Bonnot, Brignoud, Froges, Crolles, Le Versoud).",
 };
