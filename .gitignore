@@ -5,6 +5,7 @@ node_modules/
 dist/
 .astro/
 .next/
+out/
 
 # Variables d'environnement / Secrets
 .env
