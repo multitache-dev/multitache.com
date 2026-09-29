@@ -5,7 +5,7 @@ import Link from "next/link";
 import Logo from "./logo";
 import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
