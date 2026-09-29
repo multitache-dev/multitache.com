@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Logo from "./logo";
+import Logo from "@/components/Logo";
 import { Menu, X } from "lucide-react";
 
-export default function Navbar() {
+export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (

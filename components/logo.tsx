@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 
 interface LogoProps {
@@ -18,7 +19,7 @@ export default function Logo({ className = "", size = "md" }: LogoProps) {
   return (
     <div className={`inline-flex items-center select-none ${className}`}>
       <Image
-        src="/MULTITACHE-logo.png"
+        src="/images/LOGO MULTITACHE.png"
         alt="Logo MULTITÂCHE"
         height={height}
         width={width}

@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -8,8 +9,8 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-sm text-[#1f3021] mb-3">Multitâche</h3>
           <p className="text-xs text-[#4f6452] leading-relaxed max-w-xs">
-            Plomberie, électricité, peinture et climatisation à Villard-Bonnot et dans tout le
-            Grésivaudan.
+            Plomberie, électricité, peinture et climatisation à Villard-Bonnot et
+            dans tout le Grésivaudan.
           </p>
         </div>
 
@@ -19,7 +20,10 @@ export default function Footer() {
           <div className="space-y-1 text-xs text-[#4f6452]">
             <p>Villard-Bonnot (38190)</p>
             <p>
-              <a href="tel:0400000000" className="hover:text-[#2563B0] transition-colors">
+              <a
+                href="tel:0400000000"
+                className="hover:text-[#2563B0] transition-colors"
+              >
                 04 00 00 00 00
               </a>
             </p>
@@ -39,22 +43,34 @@ export default function Footer() {
           <h3 className="font-bold text-sm text-[#1f3021] mb-3">Navigation</h3>
           <ul className="space-y-1 text-xs text-[#4f6452]">
             <li>
-              <Link href="#renovations" className="hover:text-[#2563B0] transition-colors">
+              <Link
+                href="#renovations"
+                className="hover:text-[#2563B0] transition-colors"
+              >
                 Nos services
               </Link>
             </li>
             <li>
-              <Link href="#avis" className="hover:text-[#2563B0] transition-colors">
+              <Link
+                href="#avis"
+                className="hover:text-[#2563B0] transition-colors"
+              >
                 Avis clients
               </Link>
             </li>
             <li>
-              <Link href="#contact" className="hover:text-[#2563B0] transition-colors">
+              <Link
+                href="#contact"
+                className="hover:text-[#2563B0] transition-colors"
+              >
                 Demande de devis
               </Link>
             </li>
             <li>
-              <Link href="#contact" className="hover:text-[#2563B0] transition-colors">
+              <Link
+                href="#contact"
+                className="hover:text-[#2563B0] transition-colors"
+              >
                 Contact
               </Link>
             </li>

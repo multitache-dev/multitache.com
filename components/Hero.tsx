@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
-import { Phone, Send, ChevronDown } from "lucide-react";
-import Logo from "./logo";
+import { ChevronDown } from "lucide-react";
+import Logo from "@/components/Logo";
 
 export default function Hero() {
   return (

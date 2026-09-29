@@ -1,12 +1,11 @@
-import React from "react";
-import Navbar from "@/components/Navbar";
+import Header from "components/Header";
 import Hero from "@/components/Hero";
 import Renovations from "@/components/Renovations";
 import AboutMap from "@/components/AboutMap";
 import Realisations from "@/components/Realisations";
 import HowItWorks from "@/components/HowItWorks";
 import ContactCta from "@/components/ContactCta";
-import Footer from "@/components/footer";
+import Footer from "@/components/Footer";
 import GoogleReviewsBadge from "@/components/GoogleReviewsBadge";
 import SectionTitleObserver from "@/components/SectionTitleObserver";
 
@@ -20,7 +19,7 @@ export default function Homepage() {
       <GoogleReviewsBadge />
 
       {/* 1. Navigation */}
-      <Navbar />
+      <Header />
 
       <main className="flex-1">
         {/* Dégradé continu : Vert sauge exact (#bbcda8) → transition douce → blanc pur */}
