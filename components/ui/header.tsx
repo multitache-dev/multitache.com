@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Logo from "@/components/Logo";
+import Logo from "components/ui/logo";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {

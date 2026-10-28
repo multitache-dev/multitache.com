@@ -1,13 +1,13 @@
-import Header from "components/Header";
-import Hero from "@/components/Hero";
-import Renovations from "@/components/Renovations";
-import AboutMap from "@/components/AboutMap";
-import Realisations from "@/components/Realisations";
-import HowItWorks from "@/components/HowItWorks";
-import ContactCta from "@/components/ContactCta";
-import Footer from "@/components/Footer";
-import GoogleReviewsBadge from "@/components/GoogleReviewsBadge";
-import SectionTitleObserver from "@/components/SectionTitleObserver";
+import Header from "components/ui/header";
+import Hero from "components/homepage/hero";
+import Renovations from "components/homepage/renovations";
+import AboutMap from "components/homepage/aboutMap";
+import Realisations from "components/homepage/realisations";
+import HowItWorks from "components/homepage/howItWorks";
+import ContactCta from "components/homepage/contactCta";
+import Footer from "components/ui/footer";
+import GoogleReviewsBadge from "components/homepage/googleReviewsBadge";
+import SectionTitleObserver from "components/homepage/sectionTitleObserver";
 
 export default function Homepage() {
   return (

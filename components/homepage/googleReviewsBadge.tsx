@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import Link from "next/link";
 import { Star } from "lucide-react";
 
@@ -35,11 +32,7 @@ export default function GoogleReviewsBadge() {
         {/* 5 étoiles */}
         <div className="flex items-center gap-0.5 mb-1">
           {[...Array(5)].map((_, i) => (
-            <Star
-              key={i}
-              size={12}
-              className="fill-[#f1b82d] text-[#f1b82d]"
-            />
+            <Star key={i} size={12} className="fill-[#f1b82d] text-[#f1b82d]" />
           ))}
         </div>
         <span className="text-xs font-semibold text-[#1f3021]">

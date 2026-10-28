@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -9,8 +8,8 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-sm text-[#1f3021] mb-3">Multitâche</h3>
           <p className="text-xs text-[#4f6452] leading-relaxed max-w-xs">
-            Plomberie, électricité, peinture et climatisation à Villard-Bonnot et
-            dans tout le Grésivaudan.
+            Plomberie, électricité, peinture et climatisation à Villard-Bonnot
+            et dans tout le Grésivaudan.
           </p>
         </div>
 
