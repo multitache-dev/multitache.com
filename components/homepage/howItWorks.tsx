@@ -192,6 +192,69 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
   );
 }
 
+function MobileStepCard({
+  step,
+  index,
+}: {
+  step: (typeof steps)[0];
+  index: number;
+}) {
+  const Icon = step.icon;
+  const mobileRef = useRef<HTMLDivElement>(null);
+  const mobileVisible = useInView(
+    mobileRef as React.RefObject<HTMLElement>,
+    index * 180,
+  );
+
+  return (
+    <div
+      ref={mobileRef}
+      className="flex items-start gap-5 pl-1"
+      style={{
+        opacity: mobileVisible ? 1 : 0,
+        transform: mobileVisible ? "translateX(0)" : "translateX(-16px)",
+        transition:
+          "opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1)",
+      }}
+    >
+      {/* Dot */}
+      <div
+        className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md ring-4 ring-white z-10"
+        style={{ background: step.accent }}
+      >
+        <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
+      </div>
+
+      {/* Card */}
+      <div className="flex-1 bg-white rounded-[20px] p-5 border border-[#e5edd9] shadow-[0_2px_16px_rgba(31,48,33,0.08)]">
+        <span
+          className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-3"
+          style={{
+            background: `${step.accent}22`,
+            color:
+              step.accentText === "#ffffff" ? step.accent : step.accentText,
+          }}
+        >
+          {step.label}
+        </span>
+        <h3 className="text-base font-extrabold text-[#1f3021] mb-2">
+          {step.title}
+        </h3>
+        <div
+          className="w-7 h-[2px] rounded-full mb-2.5"
+          style={{ background: step.accent }}
+        />
+        <p className="text-sm text-[#3d5040] leading-relaxed mb-3">
+          {step.description}
+        </p>
+        <span className="text-[10px] font-bold text-[#4f6452]">
+          ✓ {step.tag}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
   const [sectionVisible, setSectionVisible] = useState(false);
@@ -308,71 +371,9 @@ export default function HowItWorks() {
             </svg>
           </div>
 
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            const mobileRef = useRef<HTMLDivElement>(null);
-            const mobileVisible = useInView(
-              mobileRef as React.RefObject<HTMLElement>,
-              i * 180,
-            );
-
-            return (
-              <div
-                key={step.id}
-                ref={mobileRef}
-                className="flex items-start gap-5 pl-1"
-                style={{
-                  opacity: mobileVisible ? 1 : 0,
-                  transform: mobileVisible
-                    ? "translateX(0)"
-                    : "translateX(-16px)",
-                  transition:
-                    "opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1)",
-                }}
-              >
-                {/* Dot */}
-                <div
-                  className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md ring-4 ring-white z-10"
-                  style={{ background: step.accent }}
-                >
-                  <Icon
-                    size={22}
-                    strokeWidth={1.8}
-                    style={{ color: step.accentText }}
-                  />
-                </div>
-
-                {/* Card */}
-                <div className="flex-1 bg-white rounded-[20px] p-5 border border-[#e5edd9] shadow-[0_2px_16px_rgba(31,48,33,0.08)]">
-                  <span
-                    className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-3"
-                    style={{
-                      background: `${step.accent}22`,
-                      color:
-                        step.accentText === "#ffffff"
-                          ? step.accent
-                          : step.accentText,
-                    }}
-                  >
-                    {step.label}
-                  </span>
-                  <h3 className="text-base font-extrabold text-[#1f3021] mb-2">
-                    {step.title}
-                  </h3>
-                  <div
-                    className="w-7 h-[2px] rounded-full mb-2.5"
-                    style={{ background: step.accent }}
-                  />
-                  <p className="text-sm text-[#3d5040] leading-relaxed mb-3">
-                    {step.description}
-                  </p>
-                  <span className="text-[10px] font-bold text-[#4f6452]">
-                    ✓ {step.tag}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+          {steps.map((step, i) => (
+            <MobileStepCard key={step.id} step={step} index={i} />
+          ))}
         </div>
       </div>
     </section>

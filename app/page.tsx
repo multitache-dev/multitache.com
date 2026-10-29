@@ -7,13 +7,11 @@ import HowItWorks from "components/homepage/howItWorks";
 import ContactCta from "components/homepage/contactCta";
 import Footer from "components/ui/footer";
 import GoogleReviewsBadge from "components/homepage/googleReviewsBadge";
-import SectionTitleObserver from "components/homepage/sectionTitleObserver";
+
 
 export default function Homepage() {
   return (
     <div className="min-h-screen flex flex-col text-[#1f3021]">
-      {/* Observer animations titres (client-only) */}
-      <SectionTitleObserver />
 
       {/* Badge Avis Google fixé bas-droite (scroll-following) */}
       <GoogleReviewsBadge />
