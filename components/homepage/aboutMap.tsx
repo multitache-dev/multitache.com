@@ -29,20 +29,13 @@ export default function AboutMap() {
 
           <div className="space-y-4 text-base sm:text-lg text-[#4f6452] leading-relaxed mb-10 max-w-lg font-light">
             <p>
-              Depuis 2003,{" "}
-              <strong className="font-semibold text-[#1f3021]">
-                Multitâche
-              </strong>{" "}
-              accompagne les particuliers dans leurs travaux de rénovation et
-              intervient dans l'ensemble du{" "}
-              <strong className="font-semibold text-[#1f3021]">
-                Grésivaudan
-              </strong>
-              .
+              Depuis 2003, <strong className="font-semibold text-[#1f3021]">Multitâche</strong>{" "}
+              accompagne les particuliers dans leurs travaux de rénovation et intervient dans
+              l'ensemble du <strong className="font-semibold text-[#1f3021]">Grésivaudan</strong>.
             </p>
             <p>
-              Un seul interlocuteur du premier coup de fil à la remise des clés,
-              un devis clair et personnalisé, et des chantiers irréprochables.
+              Un seul interlocuteur du premier coup de fil à la remise des clés, un devis clair et
+              personnalisé, et des chantiers irréprochables.
             </p>
           </div>
 

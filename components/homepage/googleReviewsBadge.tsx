@@ -35,9 +35,7 @@ export default function GoogleReviewsBadge() {
             <Star key={i} size={12} className="fill-[#f1b82d] text-[#f1b82d]" />
           ))}
         </div>
-        <span className="text-xs font-semibold text-[#1f3021]">
-          Avis Google
-        </span>
+        <span className="text-xs font-semibold text-[#1f3021]">Avis Google</span>
         <span className="text-[11px] text-neutral-500">27 avis clients</span>
       </div>
     </Link>

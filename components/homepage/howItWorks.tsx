@@ -75,8 +75,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
           : step.position === "top"
             ? "translateY(-24px)"
             : "translateY(24px)",
-        transition:
-          "opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)",
+        transition: "opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)",
       }}
     >
       {/* Content card — positioned above or below */}
@@ -88,8 +87,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
               className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
               style={{
                 background: `${step.accent}22`,
-                color:
-                  step.accentText === "#ffffff" ? step.accent : step.accentText,
+                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
                 border: `1px solid ${step.accent}44`,
               }}
             >
@@ -98,19 +96,13 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
             <h3 className="text-base sm:text-lg font-extrabold text-[#1f3021] mb-2 leading-snug">
               {step.title}
             </h3>
-            <div
-              className="w-8 h-[2.5px] rounded-full mb-3"
-              style={{ background: step.accent }}
-            />
-            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">
-              {step.description}
-            </p>
+            <div className="w-8 h-[2.5px] rounded-full mb-3" style={{ background: step.accent }} />
+            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">{step.description}</p>
             <span
               className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
               style={{
                 background: `${step.accent}15`,
-                color:
-                  step.accentText === "#ffffff" ? step.accent : step.accentText,
+                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
               }}
             >
               ✓ {step.tag}
@@ -123,11 +115,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
               className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white z-10"
               style={{ background: step.accent }}
             >
-              <Icon
-                size={22}
-                strokeWidth={1.8}
-                style={{ color: step.accentText }}
-              />
+              <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
             </div>
           </div>
 
@@ -142,11 +130,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
               className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white z-10"
               style={{ background: step.accent }}
             >
-              <Icon
-                size={22}
-                strokeWidth={1.8}
-                style={{ color: step.accentText }}
-              />
+              <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
             </div>
           </div>
 
@@ -156,8 +140,7 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
               className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
               style={{
                 background: `${step.accent}22`,
-                color:
-                  step.accentText === "#ffffff" ? step.accent : step.accentText,
+                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
                 border: `1px solid ${step.accent}44`,
               }}
             >
@@ -166,19 +149,13 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
             <h3 className="text-base sm:text-lg font-extrabold text-[#1f3021] mb-2 leading-snug">
               {step.title}
             </h3>
-            <div
-              className="w-8 h-[2.5px] rounded-full mb-3"
-              style={{ background: step.accent }}
-            />
-            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">
-              {step.description}
-            </p>
+            <div className="w-8 h-[2.5px] rounded-full mb-3" style={{ background: step.accent }} />
+            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">{step.description}</p>
             <span
               className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
               style={{
                 background: `${step.accent}15`,
-                color:
-                  step.accentText === "#ffffff" ? step.accent : step.accentText,
+                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
               }}
             >
               ✓ {step.tag}
@@ -192,19 +169,10 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
   );
 }
 
-function MobileStepCard({
-  step,
-  index,
-}: {
-  step: (typeof steps)[0];
-  index: number;
-}) {
+function MobileStepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
   const Icon = step.icon;
   const mobileRef = useRef<HTMLDivElement>(null);
-  const mobileVisible = useInView(
-    mobileRef as React.RefObject<HTMLElement>,
-    index * 180,
-  );
+  const mobileVisible = useInView(mobileRef as React.RefObject<HTMLElement>, index * 180);
 
   return (
     <div
@@ -213,8 +181,7 @@ function MobileStepCard({
       style={{
         opacity: mobileVisible ? 1 : 0,
         transform: mobileVisible ? "translateX(0)" : "translateX(-16px)",
-        transition:
-          "opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1)",
+        transition: "opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1)",
       }}
     >
       {/* Dot */}
@@ -231,25 +198,15 @@ function MobileStepCard({
           className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-3"
           style={{
             background: `${step.accent}22`,
-            color:
-              step.accentText === "#ffffff" ? step.accent : step.accentText,
+            color: step.accentText === "#ffffff" ? step.accent : step.accentText,
           }}
         >
           {step.label}
         </span>
-        <h3 className="text-base font-extrabold text-[#1f3021] mb-2">
-          {step.title}
-        </h3>
-        <div
-          className="w-7 h-[2px] rounded-full mb-2.5"
-          style={{ background: step.accent }}
-        />
-        <p className="text-sm text-[#3d5040] leading-relaxed mb-3">
-          {step.description}
-        </p>
-        <span className="text-[10px] font-bold text-[#4f6452]">
-          ✓ {step.tag}
-        </span>
+        <h3 className="text-base font-extrabold text-[#1f3021] mb-2">{step.title}</h3>
+        <div className="w-7 h-[2px] rounded-full mb-2.5" style={{ background: step.accent }} />
+        <p className="text-sm text-[#3d5040] leading-relaxed mb-3">{step.description}</p>
+        <span className="text-[10px] font-bold text-[#4f6452]">✓ {step.tag}</span>
       </div>
     </div>
   );
@@ -294,8 +251,8 @@ export default function HowItWorks() {
             Comment ça marche ?
           </h2>
           <p className="text-[#4f6452] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            De votre premier appel jusqu'à la remise des clés — un parcours
-            fluide, transparent, et pensé pour votre sérénité.
+            De votre premier appel jusqu'à la remise des clés — un parcours fluide, transparent, et
+            pensé pour votre sérénité.
           </p>
         </div>
 
@@ -348,13 +305,7 @@ export default function HowItWorks() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>
-                <linearGradient
-                  id="waveGradV"
-                  x1="0%"
-                  y1="0%"
-                  x2="0%"
-                  y2="100%"
-                >
+                <linearGradient id="waveGradV" x1="0%" y1="0%" x2="0%" y2="100%">
                   <stop offset="0%" stopColor="#bbcda8" />
                   <stop offset="50%" stopColor="#2563B0" />
                   <stop offset="100%" stopColor="#f1b82d" />

@@ -49,10 +49,7 @@ export default function Realisations() {
           {/* 3 Realisations Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {realisations.map((item, index) => (
-              <div
-                key={index}
-                className="flex flex-col group cursor-pointer"
-              >
+              <div key={index} className="flex flex-col group cursor-pointer">
                 {/* Image with rounded corners */}
                 <div className="relative h-56 sm:h-64 rounded-2xl sm:rounded-3xl overflow-hidden border border-green-500/10 shadow-[0_0_15px_rgba(34,197,94,0.08)] group-hover:shadow-[0_0_25px_rgba(34,197,94,0.20)] transition-all duration-300">
                   <Image

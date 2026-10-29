@@ -162,11 +162,13 @@ body {
 }
 
 .hero-v-shape {
-  clip-path: polygon(0 0,
-      100% 0,
-      100% calc(100% - clamp(40px, 6vw, 100px)),
-      50% 100%,
-      0 calc(100% - clamp(40px, 6vw, 100px)));
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - clamp(40px, 6vw, 100px)),
+    50% 100%,
+    0 calc(100% - clamp(40px, 6vw, 100px))
+  );
 }
 
 h1.hero-title {
@@ -186,7 +188,6 @@ h2.section-title {
 h2.section-title:hover {
   color: #2563b0;
 }
-
 
 img {
   height: auto;

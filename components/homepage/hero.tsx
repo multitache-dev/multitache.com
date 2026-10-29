@@ -33,9 +33,7 @@ export default function Hero() {
         >
           <span className="block">MULTITÂCHE, artisan dans le</span>
           <span className="block">bâtiment</span>
-          <span className="hero-subtitle-span block mt-1 text-[#2563B0]">
-            dans le Grésivaudan
-          </span>
+          <span className="hero-subtitle-span block mt-1 text-[#2563B0]">dans le Grésivaudan</span>
         </h1>
 
         {/* Sous-titre */}
@@ -43,8 +41,8 @@ export default function Hero() {
           className="text-sm sm:text-base md:text-lg text-neutral-100 max-w-xl mx-auto leading-relaxed mb-9 hero-desc-anim"
           style={{ filter: "drop-shadow(0 1px 4px rgba(0,0,0,0.9))" }}
         >
-          Plomberie, électricité, peinture et climatisation : une seule équipe
-          pour toute votre rénovation.
+          Plomberie, électricité, peinture et climatisation : une seule équipe pour toute votre
+          rénovation.
         </p>
 
         {/* Boutons CTA */}

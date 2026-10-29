@@ -48,8 +48,8 @@ export default function Renovations() {
           Nos rénovations
         </h2>
         <p className="text-sm sm:text-base md:text-lg text-[#3d5040] max-w-3xl">
-          Cinq grands domaines de travaux. Choisissez le vôtre pour découvrir
-          les prestations et les chantiers déjà réalisés.
+          Cinq grands domaines de travaux. Choisissez le vôtre pour découvrir les prestations et les
+          chantiers déjà réalisés.
         </p>
       </div>
 
