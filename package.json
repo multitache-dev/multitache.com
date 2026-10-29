@@ -11,7 +11,7 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "lint": "oxlint",
+    "lint": "oxlint app components lib tests next-env.d.ts keystatic.config.ts next.config.ts postcss.config.mjs playwright.config.ts",
     "format": "oxfmt"
   },
   "dependencies": {
