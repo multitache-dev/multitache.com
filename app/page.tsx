@@ -1,11 +1,49 @@
-import Header from "@/components/header";
-import Footer from "@/components/footer";
-import "./styles.css";
+import Header from "components/ui/header";
+import Hero from "components/homepage/hero";
+import Renovations from "components/homepage/renovations";
+import AboutMap from "components/homepage/aboutMap";
+import Realisations from "components/homepage/realisations";
+import HowItWorks from "components/homepage/howItWorks";
+import ContactCta from "components/homepage/contactCta";
+import Footer from "components/ui/footer";
+import GoogleReviewsBadge from "components/homepage/googleReviewsBadge";
 
-export default async function Homepage() {
+export default function Homepage() {
   return (
-    <div>
+    <div className="flex min-h-screen flex-col text-[#1f3021]">
+      {/* Badge Avis Google fixé bas-droite (scroll-following) */}
+      <GoogleReviewsBadge />
+
+      {/* 1. Navigation */}
       <Header />
+
+      <main className="flex-1">
+        {/* Dégradé continu : Vert sauge exact (#bbcda8) → transition douce → blanc pur */}
+        <div className="w-full bg-gradient-to-b from-[#bbcda8] via-[#dde8d5] via-50% to-white">
+          {/* 2. Hero */}
+          <Hero />
+
+          {/* 3. Nos Rénovations */}
+          <Renovations />
+        </div>
+
+        {/* 4. Qui Sommes-Nous & Carte (Image 3) */}
+        <AboutMap />
+
+        {/* 5. Comment ça marche */}
+        <HowItWorks />
+
+        {/* 6. Zone Nos Dernières Réalisations + Contact CTA avec dégradé continu */}
+        <div className="w-full bg-gradient-to-b from-white via-[#bbcda8]/40 via-45% to-white">
+          {/* Nos Dernières Réalisations */}
+          <Realisations />
+
+          {/* Contact CTA */}
+          <ContactCta />
+        </div>
+      </main>
+
+      {/* 7. Footer */}
       <Footer />
     </div>
   );

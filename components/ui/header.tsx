@@ -2,8 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Logo from "./logo";
+import Logo from "components/ui/logo";
 import { Menu, X } from "lucide-react";
+
+const navigationItems = [
+  { href: "#renovations", label: "Services & réalisations" },
+  { href: "#avis", label: "Avis" },
+  { href: "#contact", label: "Contact" },
+] as const;
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -24,24 +30,15 @@ export default function Header() {
           >
             Accueil
           </Link>
-          <Link
-            href="#renovations"
-            className="rounded-full px-4 py-1.5 text-[#293d2c] transition-colors hover:bg-[#c9dbbf]/70"
-          >
-            Services & réalisations
-          </Link>
-          <Link
-            href="#avis"
-            className="rounded-full px-4 py-1.5 text-[#293d2c] transition-colors hover:bg-[#c9dbbf]/70"
-          >
-            Avis
-          </Link>
-          <Link
-            href="#contact"
-            className="rounded-full px-4 py-1.5 text-[#293d2c] transition-colors hover:bg-[#c9dbbf]/70"
-          >
-            Contact
-          </Link>
+          {navigationItems.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              className="rounded-full px-4 py-1.5 text-[#293d2c] transition-colors hover:bg-[#c9dbbf]/70"
+            >
+              {label}
+            </Link>
+          ))}
         </nav>
 
         {/* Right CTA Button */}
@@ -75,27 +72,16 @@ export default function Header() {
           >
             Accueil
           </Link>
-          <Link
-            href="#renovations"
-            onClick={() => setMobileMenuOpen(false)}
-            className="rounded-lg px-4 py-2 text-[#293d2c] hover:bg-[#c9dbbf]/70"
-          >
-            Services & réalisations
-          </Link>
-          <Link
-            href="#avis"
-            onClick={() => setMobileMenuOpen(false)}
-            className="rounded-lg px-4 py-2 text-[#293d2c] hover:bg-[#c9dbbf]/70"
-          >
-            Avis
-          </Link>
-          <Link
-            href="#contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="rounded-lg px-4 py-2 text-[#293d2c] hover:bg-[#c9dbbf]/70"
-          >
-            Contact
-          </Link>
+          {navigationItems.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="rounded-lg px-4 py-2 text-[#293d2c] hover:bg-[#c9dbbf]/70"
+            >
+              {label}
+            </Link>
+          ))}
           <Link
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
