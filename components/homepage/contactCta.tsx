@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export default function ContactCta() {
   return (
-    <section id="contact" className="w-full py-12 md:py-20 px-4 sm:px-6 bg-transparent">
-      <div className="max-w-5xl mx-auto">
-        <div className="rounded-[28px] sm:rounded-[34px] bg-[#bbcda8] p-8 sm:p-12 md:p-14 text-center shadow-sm border border-[#a8be95]/70">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1f3021] tracking-tight mb-3">
+    <section id="contact" className="w-full bg-transparent px-4 py-12 sm:px-6 md:py-20">
+      <div className="mx-auto max-w-5xl">
+        <div className="rounded-[28px] border border-[#a8be95]/70 bg-[#bbcda8] p-8 text-center shadow-sm sm:rounded-[34px] sm:p-12 md:p-14">
+          <h2 className="mb-3 text-2xl font-extrabold tracking-tight text-[#1f3021] sm:text-3xl md:text-4xl">
             Nous contacter
           </h2>
 
-          <p className="text-xs sm:text-sm md:text-base text-[#2f4231] max-w-lg mx-auto font-medium leading-relaxed mb-6">
+          <p className="mx-auto mb-6 max-w-lg text-xs leading-relaxed font-medium text-[#2f4231] sm:text-sm md:text-base">
             Une question, un projet ou une urgence ? Écrivez-nous : votre message part directement à
             l&apos;artisan concerné.
           </p>
@@ -17,7 +17,7 @@ export default function ContactCta() {
           <div>
             <Link
               href="/contact"
-              className="inline-block bg-[#316bb3] hover:bg-[#255894] text-white font-semibold text-xs sm:text-sm px-6 sm:px-8 py-3 rounded-full shadow-md transition-all transform hover:-translate-y-0.5"
+              className="inline-block transform rounded-full bg-[#316bb3] px-6 py-3 text-xs font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:bg-[#255894] sm:px-8 sm:text-sm"
             >
               Accéder au formulaire de contact
             </Link>

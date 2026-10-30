@@ -41,24 +41,24 @@ const renovationItems: RenovationCardProps[] = [
 
 export default function Renovations() {
   return (
-    <section id="renovations" className="w-full py-12 md:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+    <section id="renovations" className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 md:py-20">
       {/* Header section */}
       <div className="mb-10 sm:mb-12">
-        <h2 className="section-title text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1f3021] tracking-tight mb-3">
+        <h2 className="section-title mb-3 text-3xl font-extrabold tracking-tight text-[#1f3021] sm:text-4xl md:text-5xl">
           Nos rénovations
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-[#3d5040] max-w-3xl">
+        <p className="max-w-3xl text-sm text-[#3d5040] sm:text-base md:text-lg">
           Cinq grands domaines de travaux. Choisissez le vôtre pour découvrir les prestations et les
           chantiers déjà réalisés.
         </p>
       </div>
 
       {/* 5 Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 lg:gap-5">
         {renovationItems.map((item, index) => (
           <div
             key={index}
-            className="group/card relative h-[360px] sm:h-[400px] rounded-[24px] overflow-hidden border border-green-500/10 shadow-[0_0_15px_rgba(34,197,94,0.08)] transition-all duration-300 ease-out transform flex flex-col justify-between p-5 hover:scale-105 hover:shadow-[0_15px_30px_rgba(34,197,94,0.20)] hover:z-10 cursor-pointer"
+            className="group/card relative flex h-[360px] transform cursor-pointer flex-col justify-between overflow-hidden rounded-[24px] border border-green-500/10 p-5 shadow-[0_0_15px_rgba(34,197,94,0.08)] transition-all duration-300 ease-out hover:z-10 hover:scale-105 hover:shadow-[0_15px_30px_rgba(34,197,94,0.20)] sm:h-[400px]"
           >
             {/* Background Image */}
             <Image
@@ -69,11 +69,11 @@ export default function Renovations() {
             />
 
             {/* Gradient for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/75 pointer-events-none" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/15 to-black/75" />
 
             {/* Top Title */}
-            <div className="relative z-10 text-center pt-1">
-              <h3 className="text-white font-bold text-sm sm:text-base tracking-wider uppercase drop-shadow-md leading-snug">
+            <div className="relative z-10 pt-1 text-center">
+              <h3 className="text-sm leading-snug font-bold tracking-wider text-white uppercase drop-shadow-md sm:text-base">
                 {item.title}
               </h3>
             </div>
@@ -82,9 +82,9 @@ export default function Renovations() {
             <div className="relative z-10 flex justify-start">
               <Link
                 href={item.link}
-                className="inline-flex items-center gap-2 bg-[#316bb3] hover:bg-[#255894] text-white pl-1.5 pr-3.5 py-1 rounded-full text-[11px] sm:text-xs font-semibold shadow-md transition-all group-hover:shadow-lg"
+                className="inline-flex items-center gap-2 rounded-full bg-[#316bb3] py-1 pr-3.5 pl-1.5 text-[11px] font-semibold text-white shadow-md transition-all group-hover:shadow-lg hover:bg-[#255894] sm:text-xs"
               >
-                <span className="w-5 h-5 rounded-full bg-[#f1b82d] flex items-center justify-center text-[#1f3021] shrink-0">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#f1b82d] text-[#1f3021]">
                   <ArrowRight size={11} strokeWidth={2.5} />
                 </span>
                 <span>En savoir +</span>

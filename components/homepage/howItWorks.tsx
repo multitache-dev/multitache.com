@@ -55,8 +55,39 @@ function useInView(ref: React.RefObject<HTMLElement | null>, delay = 0) {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [delay]);
+  }, [delay, ref]);
   return visible;
+}
+
+function StepCardContent({ step }: { step: (typeof steps)[0] }) {
+  return (
+    <div className="group w-full max-w-[260px] rounded-[22px] border border-[#e5edd9] bg-white p-6 shadow-[0_4px_24px_rgba(31,48,33,0.08)] transition-all duration-400 hover:border-[#bbcda8] hover:shadow-[0_8px_36px_rgba(31,48,33,0.14)]">
+      <span
+        className="mb-4 inline-block rounded-full px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase"
+        style={{
+          background: `${step.accent}22`,
+          color: step.accentText === "#ffffff" ? step.accent : step.accentText,
+          border: `1px solid ${step.accent}44`,
+        }}
+      >
+        {step.label}
+      </span>
+      <h3 className="mb-2 text-base leading-snug font-extrabold text-[#1f3021] sm:text-lg">
+        {step.title}
+      </h3>
+      <div className="mb-3 h-[2.5px] w-8 rounded-full" style={{ background: step.accent }} />
+      <p className="mb-4 text-sm leading-relaxed text-[#3d5040]">{step.description}</p>
+      <span
+        className="inline-block rounded-full px-2.5 py-1 text-[10px] font-bold tracking-widest uppercase"
+        style={{
+          background: `${step.accent}15`,
+          color: step.accentText === "#ffffff" ? step.accent : step.accentText,
+        }}
+      >
+        ✓ {step.tag}
+      </span>
+    </div>
+  );
 }
 
 function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
@@ -78,88 +109,36 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
         transition: "opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)",
       }}
     >
-      {/* Content card — positioned above or below */}
       {step.position === "top" ? (
         <>
-          {/* Card above */}
-          <div className="group w-full max-w-[260px] bg-white rounded-[22px] p-6 border border-[#e5edd9] shadow-[0_4px_24px_rgba(31,48,33,0.08)] hover:shadow-[0_8px_36px_rgba(31,48,33,0.14)] hover:border-[#bbcda8] transition-all duration-400 mb-6">
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
-              style={{
-                background: `${step.accent}22`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-                border: `1px solid ${step.accent}44`,
-              }}
-            >
-              {step.label}
-            </span>
-            <h3 className="text-base sm:text-lg font-extrabold text-[#1f3021] mb-2 leading-snug">
-              {step.title}
-            </h3>
-            <div className="w-8 h-[2.5px] rounded-full mb-3" style={{ background: step.accent }} />
-            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">{step.description}</p>
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
-              style={{
-                background: `${step.accent}15`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-              }}
-            >
-              ✓ {step.tag}
-            </span>
+          <div className="mb-6">
+            <StepCardContent step={step} />
           </div>
 
-          {/* Dot node */}
           <div className="relative flex items-center justify-center">
             <div
-              className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white z-10"
+              className="z-10 flex h-14 w-14 items-center justify-center rounded-full shadow-lg ring-4 ring-white"
               style={{ background: step.accent }}
             >
               <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
             </div>
           </div>
 
-          {/* Spacer for bottom row */}
           <div className="flex-1" />
         </>
       ) : (
         <>
-          {/* Dot node */}
           <div className="relative flex items-center justify-center">
             <div
-              className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white z-10"
+              className="z-10 flex h-14 w-14 items-center justify-center rounded-full shadow-lg ring-4 ring-white"
               style={{ background: step.accent }}
             >
               <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
             </div>
           </div>
 
-          {/* Card below */}
-          <div className="group w-full max-w-[260px] bg-white rounded-[22px] p-6 border border-[#e5edd9] shadow-[0_4px_24px_rgba(31,48,33,0.08)] hover:shadow-[0_8px_36px_rgba(31,48,33,0.14)] hover:border-[#bbcda8] transition-all duration-400 mt-6">
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
-              style={{
-                background: `${step.accent}22`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-                border: `1px solid ${step.accent}44`,
-              }}
-            >
-              {step.label}
-            </span>
-            <h3 className="text-base sm:text-lg font-extrabold text-[#1f3021] mb-2 leading-snug">
-              {step.title}
-            </h3>
-            <div className="w-8 h-[2.5px] rounded-full mb-3" style={{ background: step.accent }} />
-            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">{step.description}</p>
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
-              style={{
-                background: `${step.accent}15`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-              }}
-            >
-              ✓ {step.tag}
-            </span>
+          <div className="mt-6">
+            <StepCardContent step={step} />
           </div>
 
           <div className="flex-1" />
@@ -186,16 +165,16 @@ function MobileStepCard({ step, index }: { step: (typeof steps)[0]; index: numbe
     >
       {/* Dot */}
       <div
-        className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md ring-4 ring-white z-10"
+        className="z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-full shadow-md ring-4 ring-white"
         style={{ background: step.accent }}
       >
         <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
       </div>
 
       {/* Card */}
-      <div className="flex-1 bg-white rounded-[20px] p-5 border border-[#e5edd9] shadow-[0_2px_16px_rgba(31,48,33,0.08)]">
+      <div className="flex-1 rounded-[20px] border border-[#e5edd9] bg-white p-5 shadow-[0_2px_16px_rgba(31,48,33,0.08)]">
         <span
-          className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-3"
+          className="mb-3 inline-block rounded-full px-2 py-0.5 text-[10px] font-bold tracking-widest uppercase"
           style={{
             background: `${step.accent}22`,
             color: step.accentText === "#ffffff" ? step.accent : step.accentText,
@@ -203,9 +182,9 @@ function MobileStepCard({ step, index }: { step: (typeof steps)[0]; index: numbe
         >
           {step.label}
         </span>
-        <h3 className="text-base font-extrabold text-[#1f3021] mb-2">{step.title}</h3>
-        <div className="w-7 h-[2px] rounded-full mb-2.5" style={{ background: step.accent }} />
-        <p className="text-sm text-[#3d5040] leading-relaxed mb-3">{step.description}</p>
+        <h3 className="mb-2 text-base font-extrabold text-[#1f3021]">{step.title}</h3>
+        <div className="mb-2.5 h-[2px] w-7 rounded-full" style={{ background: step.accent }} />
+        <p className="mb-3 text-sm leading-relaxed text-[#3d5040]">{step.description}</p>
         <span className="text-[10px] font-bold text-[#4f6452]">✓ {step.tag}</span>
       </div>
     </div>
@@ -232,25 +211,25 @@ export default function HowItWorks() {
   return (
     <section
       ref={sectionRef}
-      className="w-full py-20 lg:py-28 px-4 sm:px-6 bg-white overflow-x-hidden"
+      className="w-full overflow-x-hidden bg-white px-4 py-20 sm:px-6 lg:py-28"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="mx-auto max-w-6xl">
         {/* Header */}
         <div
-          className="text-center mb-16"
+          className="mb-16 text-center"
           style={{
             opacity: sectionVisible ? 1 : 0,
             transform: sectionVisible ? "translateY(0)" : "translateY(20px)",
             transition: "opacity 0.7s ease, transform 0.7s ease",
           }}
         >
-          <span className="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#4f6452] bg-[#eef5e8] border border-[#bbcda8]/50 px-4 py-1.5 rounded-full mb-5">
+          <span className="mb-5 inline-block rounded-full border border-[#bbcda8]/50 bg-[#eef5e8] px-4 py-1.5 text-xs font-bold tracking-[0.2em] text-[#4f6452] uppercase">
             Notre processus
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1f3021] tracking-tight mb-4 leading-tight">
+          <h2 className="mb-4 text-3xl leading-tight font-extrabold tracking-tight text-[#1f3021] sm:text-4xl md:text-5xl">
             Comment ça marche ?
           </h2>
-          <p className="text-[#4f6452] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-[#4f6452] sm:text-lg">
             De votre premier appel jusqu'à la remise des clés — un parcours fluide, transparent, et
             pensé pour votre sérénité.
           </p>
@@ -263,7 +242,7 @@ export default function HowItWorks() {
             <svg
               viewBox="0 0 900 200"
               preserveAspectRatio="none"
-              className="absolute inset-x-0 w-full pointer-events-none"
+              className="pointer-events-none absolute inset-x-0 w-full"
               style={{ top: "50%", transform: "translateY(-50%)", height: 200 }}
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -295,13 +274,13 @@ export default function HowItWorks() {
         </div>
 
         {/* ── Mobile: vertical stack ── */}
-        <div className="md:hidden flex flex-col gap-8 relative">
+        <div className="relative flex flex-col gap-8 md:hidden">
           {/* Vertical wavy SVG */}
-          <div className="absolute left-7 top-7 bottom-7 w-8 pointer-events-none">
+          <div className="pointer-events-none absolute top-7 bottom-7 left-7 w-8">
             <svg
               viewBox="0 0 32 600"
               preserveAspectRatio="none"
-              className="w-full h-full"
+              className="h-full w-full"
               xmlns="http://www.w3.org/2000/svg"
             >
               <defs>

@@ -23,14 +23,14 @@ export default function GoogleReviewsBadge() {
       ].join(" ")}
     >
       {/* Pastille note jaune */}
-      <div className="bg-[#f1b82d] text-[#1f3021] font-extrabold text-sm w-10 h-10 rounded-full flex items-center justify-center shrink-0 shadow-2xs">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#f1b82d] text-sm font-extrabold text-[#1f3021] shadow-2xs">
         4.8
       </div>
 
       {/* Étoiles + libellé */}
       <div className="flex flex-col items-start leading-none">
         {/* 5 étoiles */}
-        <div className="flex items-center gap-0.5 mb-1">
+        <div className="mb-1 flex items-center gap-0.5">
           {[...Array(5)].map((_, i) => (
             <Star key={i} size={12} className="fill-[#f1b82d] text-[#f1b82d]" />
           ))}

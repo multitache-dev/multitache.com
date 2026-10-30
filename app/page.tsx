@@ -10,7 +10,7 @@ import GoogleReviewsBadge from "components/homepage/googleReviewsBadge";
 
 export default function Homepage() {
   return (
-    <div className="min-h-screen flex flex-col text-[#1f3021]">
+    <div className="flex min-h-screen flex-col text-[#1f3021]">
       {/* Badge Avis Google fixé bas-droite (scroll-following) */}
       <GoogleReviewsBadge />
 

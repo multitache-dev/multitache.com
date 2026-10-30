@@ -1,9 +1,13 @@
-<!-- BEGIN:nextjs-agent-rules -->
+## Agent skills
 
-# This is NOT the Next.js you know
+### Issue tracker
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+Issues and specs live in GitHub Issues for `multitache-dev/multitache.com`; use the `gh` CLI. See `docs/agents/issue-tracker.md`.
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+### Triage labels
 
-<!-- END:nextjs-agent-rules -->
+Use the canonical labels `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+This is a single-context repository with a root `GLOSSARY.md` and `docs/adr/`. See `docs/agents/domain.md`.
