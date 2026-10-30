@@ -22,7 +22,7 @@ jobs:
         run: pnpm lint
 
       - name: Check Formatting
-        run: pnpm exec oxfmt --check
+        run: pnpm format --check
 
   typescriptChecker:
     name: 🟦 TypeScript Checker

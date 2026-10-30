@@ -9,46 +9,46 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="w-full py-3 px-4 sm:px-8 lg:px-12 bg-[#dfead8] relative z-30 shadow-xs border-b border-[#cedec5]">
-      <div className="flex items-center justify-between w-full">
+    <header className="relative z-30 w-full border-b border-[#cedec5] bg-[#dfead8] px-4 py-3 shadow-xs sm:px-8 lg:px-12">
+      <div className="flex w-full items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center">
           <Logo size="md" />
         </Link>
 
         {/* Center Nav Links (Desktop) */}
-        <nav className="hidden md:flex items-center space-x-1 sm:space-x-2 text-sm font-medium text-[#1f3021]">
+        <nav className="hidden items-center space-x-1 text-sm font-medium text-[#1f3021] sm:space-x-2 md:flex">
           <Link
             href="/"
-            className="px-4 py-1.5 rounded-full bg-[#c9dbbf] text-[#1f3021] font-semibold transition-colors shadow-2xs"
+            className="rounded-full bg-[#c9dbbf] px-4 py-1.5 font-semibold text-[#1f3021] shadow-2xs transition-colors"
           >
             Accueil
           </Link>
           <Link
             href="#renovations"
-            className="px-4 py-1.5 rounded-full hover:bg-[#c9dbbf]/70 text-[#293d2c] transition-colors"
+            className="rounded-full px-4 py-1.5 text-[#293d2c] transition-colors hover:bg-[#c9dbbf]/70"
           >
             Services & réalisations
           </Link>
           <Link
             href="#avis"
-            className="px-4 py-1.5 rounded-full hover:bg-[#c9dbbf]/70 text-[#293d2c] transition-colors"
+            className="rounded-full px-4 py-1.5 text-[#293d2c] transition-colors hover:bg-[#c9dbbf]/70"
           >
             Avis
           </Link>
           <Link
             href="#contact"
-            className="px-4 py-1.5 rounded-full hover:bg-[#c9dbbf]/70 text-[#293d2c] transition-colors"
+            className="rounded-full px-4 py-1.5 text-[#293d2c] transition-colors hover:bg-[#c9dbbf]/70"
           >
             Contact
           </Link>
         </nav>
 
         {/* Right CTA Button */}
-        <div className="hidden md:flex items-center">
+        <div className="hidden items-center md:flex">
           <Link
             href="#contact"
-            className="bg-[#f1b82d] hover:bg-[#e0aa24] text-[#1f3021] font-semibold text-sm px-5 py-2.5 rounded-full shadow-xs transition-all transform hover:-translate-y-0.5"
+            className="transform rounded-full bg-[#f1b82d] px-5 py-2.5 text-sm font-semibold text-[#1f3021] shadow-xs transition-all hover:-translate-y-0.5 hover:bg-[#e0aa24]"
           >
             Devis gratuit
           </Link>
@@ -58,7 +58,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg text-[#1f3021] hover:bg-[#c9dbbf]"
+          className="rounded-lg p-2 text-[#1f3021] hover:bg-[#c9dbbf] md:hidden"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -67,39 +67,39 @@ export default function Header() {
 
       {/* Mobile dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-3 p-4 bg-[#dfead8] backdrop-blur-md rounded-2xl shadow-lg border border-[#cedec5] flex flex-col space-y-3">
+        <div className="mt-3 flex flex-col space-y-3 rounded-2xl border border-[#cedec5] bg-[#dfead8] p-4 shadow-lg backdrop-blur-md md:hidden">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="px-4 py-2 rounded-lg bg-[#c9dbbf] text-[#1f3021] font-semibold"
+            className="rounded-lg bg-[#c9dbbf] px-4 py-2 font-semibold text-[#1f3021]"
           >
             Accueil
           </Link>
           <Link
             href="#renovations"
             onClick={() => setMobileMenuOpen(false)}
-            className="px-4 py-2 rounded-lg text-[#293d2c] hover:bg-[#c9dbbf]/70"
+            className="rounded-lg px-4 py-2 text-[#293d2c] hover:bg-[#c9dbbf]/70"
           >
             Services & réalisations
           </Link>
           <Link
             href="#avis"
             onClick={() => setMobileMenuOpen(false)}
-            className="px-4 py-2 rounded-lg text-[#293d2c] hover:bg-[#c9dbbf]/70"
+            className="rounded-lg px-4 py-2 text-[#293d2c] hover:bg-[#c9dbbf]/70"
           >
             Avis
           </Link>
           <Link
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="px-4 py-2 rounded-lg text-[#293d2c] hover:bg-[#c9dbbf]/70"
+            className="rounded-lg px-4 py-2 text-[#293d2c] hover:bg-[#c9dbbf]/70"
           >
             Contact
           </Link>
           <Link
             href="#contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-center bg-[#f1b82d] text-[#1f3021] font-semibold py-2.5 rounded-full shadow-xs"
+            className="rounded-full bg-[#f1b82d] py-2.5 text-center font-semibold text-[#1f3021] shadow-xs"
           >
             Devis gratuit
           </Link>

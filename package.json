@@ -11,8 +11,9 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "lint": "oxlint",
-    "format": "oxfmt"
+    "lint": "oxlint app components lib tests next-env.d.ts keystatic.config.ts next.config.ts postcss.config.mjs playwright.config.ts",
+    "format": "oxfmt",
+    "prepare": "lefthook install"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
@@ -36,6 +37,7 @@
     "@playwright/test": "^1.62.1",
     "@types/node": "26.2.0",
     "@types/react": "19.2.18",
+    "lefthook": "^2.2.2",
     "oxfmt": "^0.63.0",
     "oxlint": "^1.78.0",
     "typescript": "7.0.2"
