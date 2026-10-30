@@ -1,91 +1,93 @@
 ---
 name: setup-pre-commit
-description: Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-commit hooks, set up Husky, configure lint-staged, or add commit-time formatting/typechecking/testing.
+description: Set up Lefthook pre-commit and pre-push checks using the repository's existing formatter and linter. Use when the user wants commit-time formatting, staged-file linting, or Git quality hooks.
 ---
 
-# Setup Pre-Commit Hooks
+# Setup Lefthook Quality Hooks
 
-## What This Sets Up
+## Repository policy
 
-- **Husky** pre-commit hook
-- **lint-staged** running Prettier on all staged files
-- **Prettier** config (if missing)
-- **typecheck** and **test** scripts in the pre-commit hook
+- Use the package manager indicated by the lockfile. Prefer `pnpm` when `pnpm-lock.yaml` exists.
+- Reuse the repository's configured formatter and linter. Do not introduce Prettier when Oxfmt is already configured.
+- Use Lefthook's `{staged_files}` in pre-commit commands for staged-file behavior. Do not add `lint-staged` unless Lefthook cannot express the required workflow.
+- Keep pre-commit checks fast and scoped to staged source files. Put full-project checks in pre-push.
+- Add typecheck or test commands only when matching scripts already exist, or when the user explicitly requests them.
 
 ## Steps
 
 ### 1. Detect package manager
 
-Check for `package-lock.json` (npm), `pnpm-lock.yaml` (pnpm), `yarn.lock` (yarn), `bun.lockb` (bun). Use whichever is present. Default to npm if unclear.
+Check for `pnpm-lock.yaml`, `package-lock.json`, `yarn.lock`, or `bun.lockb`. Use the matching package manager, preferring pnpm when multiple lockfiles exist. Confirm the available scripts and existing lint/format configuration before changing files.
 
-### 2. Install dependencies
+Completion criterion: the package manager, formatter, linter, and available validation scripts are known.
 
-Install as devDependencies:
+### 2. Install Lefthook
 
 ```
-husky lint-staged prettier
+pnpm add --save-dev lefthook
 ```
 
-### 3. Initialize Husky
+Adapt the command to the detected package manager. Do not install Husky, Prettier, or lint-staged when Lefthook and the repository's existing tools cover the workflow.
+
+Completion criterion: Lefthook is present in `devDependencies` and the lockfile is updated.
+
+### 3. Configure Lefthook
+
+Create `lefthook.yml` with staged source checks and full pre-push checks. Adapt the file extensions and commands to the repository:
+
+```yaml
+pre-commit:
+  commands:
+    format:
+      glob: "*.{ts,tsx,js,jsx,mjs,cjs}"
+      run: pnpm exec oxfmt {staged_files}
+      stage_fixed: true
+    lint:
+      glob: "*.{ts,tsx,js,jsx,mjs,cjs}"
+      run: pnpm exec oxlint {staged_files}
+
+pre-push:
+  commands:
+    lint:
+      run: pnpm lint
+    format:
+      run: pnpm format --check
+```
+
+Use `stage_fixed: true` for formatters that modify files. Keep lint after formatting so it checks the formatted staged content.
+
+Add a package `prepare` script that installs the hooks for contributors:
+
+```json
+{
+  "scripts": {
+    "prepare": "lefthook install"
+  }
+}
+```
+
+Preserve existing `prepare` behavior by composing commands rather than replacing it.
+
+Completion criterion: `lefthook.yml` uses staged files for pre-commit and full-project scripts for pre-push, and installation is wired through `prepare`.
+
+### 4. Install and verify hooks
+
+Run:
 
 ```bash
-npx husky init
+pnpm prepare
+pnpm exec lefthook dump
+pnpm exec lefthook run pre-commit --force
+pnpm exec lefthook run pre-push --force
 ```
 
-This creates `.husky/` dir and adds `prepare: "husky"` to package.json.
+If the repository has no staged files, a normal pre-commit run may skip commands; use `--force` for a configuration smoke test. Verify that:
 
-### 4. Create `.husky/pre-commit`
+- Lefthook installs both required Git hooks.
+- The dumped configuration contains staged-file format and lint commands.
+- Formatting passes and any fixes are staged automatically.
+- Full lint and format checks pass on pre-push.
 
-Write this file (no shebang needed for Husky v9+):
+Completion criterion: both hooks execute successfully with the repository's actual commands.
 
-```
-npx lint-staged
-npm run typecheck
-npm run test
-```
-
-**Adapt**: Replace `npm` with detected package manager. If repo has no `typecheck` or `test` script in package.json, omit those lines and tell the user.
-
-### 5. Create `.lintstagedrc`
-
-```json
-{
-  "*": "prettier --ignore-unknown --write"
-}
-```
-
-### 6. Create `.prettierrc` (if missing)
-
-Only create if no Prettier config exists. Use these defaults:
-
-```json
-{
-  "useTabs": false,
-  "tabWidth": 2,
-  "printWidth": 80,
-  "singleQuote": false,
-  "trailingComma": "es5",
-  "semi": true,
-  "arrowParens": "always"
-}
-```
-
-### 7. Verify
-
-- [ ] `.husky/pre-commit` exists and is executable
-- [ ] `.lintstagedrc` exists
-- [ ] `prepare` script in package.json is `"husky"`
-- [ ] `prettier` config exists
-- [ ] Run `npx lint-staged` to verify it works
-
-### 8. Commit
-
-Stage all changed/created files and commit with message: `Add pre-commit hooks (husky + lint-staged + prettier)`
-
-This will run through the new pre-commit hooks: a good smoke test that everything works.
-
-## Notes
-
-- Husky v9+ doesn't need shebangs in hook files
-- `prettier --ignore-unknown` skips files Prettier can't parse (images, etc.)
-- The pre-commit runs lint-staged first (fast, staged-only), then full typecheck and tests
+Do not create a commit automatically. Report the files changed and the verification results.
