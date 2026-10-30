@@ -113,10 +113,10 @@ body {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ANIMATIONS — TITRES (entrée + pulsation couleur + scale)
+   ANIMATIONS
 ───────────────────────────────────────────────────────────── */
 
-/* 1. Apparition du Hero Logo */
+/* Hero Logo */
 @keyframes fadeSlideDown {
   from {
     opacity: 0;
@@ -128,7 +128,11 @@ body {
   }
 }
 
-/* 2. Apparition titre depuis le bas */
+.hero-logo-anim {
+  animation: fadeSlideDown 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Hero Titre */
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
@@ -140,24 +144,11 @@ body {
   }
 }
 
-/* 5. Fondu discret des boutons hero */
-@keyframes fadein {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+h1.hero-title {
+  animation: fadeSlideUp 0.85s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* ── Appliqué aux éléments ── */
-
-.hero-logo-anim {
-  animation: fadeSlideDown 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
+/* Découpe Hero en pointe V */
 .hero-v-shape {
   clip-path: polygon(
     0 0,
@@ -168,15 +159,7 @@ body {
   );
 }
 
-h1.hero-title {
-  animation: fadeSlideUp 0.85s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.hero-subtitle-span {
-  display: inline-block;
-}
-
-/* Hover bleu statique sur les titres secondaires (h2) */
+/* Titres de section H2 */
 h2.section-title {
   display: inline-block;
   transition: color 0.2s ease;
@@ -186,7 +169,6 @@ h2.section-title:hover {
   color: #2563b0;
 }
 
-/* Animation d'entrée automatique pour les h2 (viewport) */
 @keyframes sectionTitleIn {
   from {
     opacity: 0;
@@ -198,12 +180,37 @@ h2.section-title:hover {
   }
 }
 
-/* Classe utilitaire déclenchée par JS IntersectionObserver */
 .anim-in {
   animation: sectionTitleIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-img {
-  height: auto;
-  max-width: 100%;
+/* Carrousel services */
+@keyframes carouselSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes carouselSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.carousel-slide-right {
+  animation: carouselSlideRight 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.carousel-slide-left {
+  animation: carouselSlideLeft 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

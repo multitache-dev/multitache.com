@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Phone, ClipboardList, HardHat } from "lucide-react";
 
 const steps = [
@@ -14,7 +14,7 @@ const steps = [
     tag: "Premier contact",
     accent: "#bbcda8",
     accentText: "#2e4a2f",
-    position: "top", // above the wave
+    position: "top" as const,
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const steps = [
     tag: "Devis sur mesure",
     accent: "#2563B0",
     accentText: "#ffffff",
-    position: "bottom", // below the wave
+    position: "bottom" as const,
   },
   {
     id: 3,
@@ -38,9 +38,11 @@ const steps = [
     tag: "Satisfaction garantie",
     accent: "#f1b82d",
     accentText: "#1f3021",
-    position: "top", // above the wave
+    position: "top" as const,
   },
 ];
+
+type Step = (typeof steps)[number];
 
 function useInView(ref: React.RefObject<HTMLElement | null>, delay = 0) {
   const [visible, setVisible] = useState(false);
@@ -53,14 +55,56 @@ function useInView(ref: React.RefObject<HTMLElement | null>, delay = 0) {
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [delay]);
+  }, [ref, delay]);
   return visible;
 }
 
-function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const visible = useInView(ref as React.RefObject<HTMLElement>, index * 180);
+function StepNode({ step }: { step: Step }) {
   const Icon = step.icon;
+  return (
+    <div
+      className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white z-10 shrink-0"
+      style={{ background: step.accent }}
+    >
+      <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
+    </div>
+  );
+}
+
+function StepCardBox({ step, className = "" }: { step: Step; className?: string }) {
+  return (
+    <div className={`group w-full max-w-[260px] bg-white rounded-[22px] p-6 border border-[#e5edd9] shadow-[0_4px_24px_rgba(31,48,33,0.08)] hover:shadow-[0_8px_36px_rgba(31,48,33,0.14)] hover:border-[#bbcda8] transition-all duration-400 ${className}`}>
+      <span
+        className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
+        style={{
+          background: `${step.accent}22`,
+          color: step.accentText === "#ffffff" ? step.accent : step.accentText,
+          border: `1px solid ${step.accent}44`,
+        }}
+      >
+        {step.label}
+      </span>
+      <h3 className="text-base sm:text-lg font-extrabold text-[#1f3021] mb-2 leading-snug">
+        {step.title}
+      </h3>
+      <div className="w-8 h-[2.5px] rounded-full mb-3" style={{ background: step.accent }} />
+      <p className="text-sm text-[#3d5040] leading-relaxed mb-4">{step.description}</p>
+      <span
+        className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
+        style={{
+          background: `${step.accent}15`,
+          color: step.accentText === "#ffffff" ? step.accent : step.accentText,
+        }}
+      >
+        ✓ {step.tag}
+      </span>
+    </div>
+  );
+}
+
+function DesktopStepCard({ step, index }: { step: Step; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const visible = useInView(ref, index * 180);
 
   return (
     <div
@@ -76,93 +120,53 @@ function StepCard({ step, index }: { step: (typeof steps)[0]; index: number }) {
         transition: "opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)",
       }}
     >
-      {/* Content card — positioned above or below */}
       {step.position === "top" ? (
         <>
-          {/* Card above */}
-          <div className="group w-full max-w-[260px] bg-white rounded-[22px] p-6 border border-[#e5edd9] shadow-[0_4px_24px_rgba(31,48,33,0.08)] hover:shadow-[0_8px_36px_rgba(31,48,33,0.14)] hover:border-[#bbcda8] transition-all duration-400 mb-6">
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
-              style={{
-                background: `${step.accent}22`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-                border: `1px solid ${step.accent}44`,
-              }}
-            >
-              {step.label}
-            </span>
-            <h3 className="text-base sm:text-lg font-extrabold text-[#1f3021] mb-2 leading-snug">
-              {step.title}
-            </h3>
-            <div className="w-8 h-[2.5px] rounded-full mb-3" style={{ background: step.accent }} />
-            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">{step.description}</p>
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
-              style={{
-                background: `${step.accent}15`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-              }}
-            >
-              ✓ {step.tag}
-            </span>
-          </div>
-
-          {/* Dot node */}
-          <div className="relative flex items-center justify-center">
-            <div
-              className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white z-10"
-              style={{ background: step.accent }}
-            >
-              <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
-            </div>
-          </div>
-
-          {/* Spacer for bottom row */}
+          <StepCardBox step={step} className="mb-6" />
+          <StepNode step={step} />
           <div className="flex-1" />
         </>
       ) : (
         <>
-          {/* Dot node */}
-          <div className="relative flex items-center justify-center">
-            <div
-              className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg ring-4 ring-white z-10"
-              style={{ background: step.accent }}
-            >
-              <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
-            </div>
-          </div>
-
-          {/* Card below */}
-          <div className="group w-full max-w-[260px] bg-white rounded-[22px] p-6 border border-[#e5edd9] shadow-[0_4px_24px_rgba(31,48,33,0.08)] hover:shadow-[0_8px_36px_rgba(31,48,33,0.14)] hover:border-[#bbcda8] transition-all duration-400 mt-6">
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full mb-4"
-              style={{
-                background: `${step.accent}22`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-                border: `1px solid ${step.accent}44`,
-              }}
-            >
-              {step.label}
-            </span>
-            <h3 className="text-base sm:text-lg font-extrabold text-[#1f3021] mb-2 leading-snug">
-              {step.title}
-            </h3>
-            <div className="w-8 h-[2.5px] rounded-full mb-3" style={{ background: step.accent }} />
-            <p className="text-sm text-[#3d5040] leading-relaxed mb-4">{step.description}</p>
-            <span
-              className="inline-block text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full"
-              style={{
-                background: `${step.accent}15`,
-                color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-              }}
-            >
-              ✓ {step.tag}
-            </span>
-          </div>
-
+          <StepNode step={step} />
+          <StepCardBox step={step} className="mt-6" />
           <div className="flex-1" />
         </>
       )}
+    </div>
+  );
+}
+
+function MobileStepCard({ step, index }: { step: Step; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const visible = useInView(ref, index * 180);
+
+  return (
+    <div
+      ref={ref}
+      className="flex items-start gap-5 pl-1"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateX(0)" : "translateX(-16px)",
+        transition: "opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1)",
+      }}
+    >
+      <StepNode step={step} />
+      <div className="flex-1 bg-white rounded-[20px] p-5 border border-[#e5edd9] shadow-[0_2px_16px_rgba(31,48,33,0.08)]">
+        <span
+          className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-3"
+          style={{
+            background: `${step.accent}22`,
+            color: step.accentText === "#ffffff" ? step.accent : step.accentText,
+          }}
+        >
+          {step.label}
+        </span>
+        <h3 className="text-base font-extrabold text-[#1f3021] mb-2">{step.title}</h3>
+        <div className="w-7 h-[2px] rounded-full mb-2.5" style={{ background: step.accent }} />
+        <p className="text-sm text-[#3d5040] leading-relaxed mb-3">{step.description}</p>
+        <span className="text-[10px] font-bold text-[#4f6452]">✓ {step.tag}</span>
+      </div>
     </div>
   );
 }
@@ -183,13 +187,8 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      className="w-full py-20 lg:py-28 px-4 sm:px-6 bg-white overflow-x-hidden"
-    >
+    <section ref={sectionRef} className="w-full py-20 lg:py-28 px-4 sm:px-6 bg-white overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
-
-        {/* Header */}
         <div
           className="text-center mb-16"
           style={{
@@ -205,13 +204,12 @@ export default function HowItWorks() {
             Comment ça marche ?
           </h2>
           <p className="text-[#4f6452] text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            De votre premier appel jusqu'à la remise des clés — un parcours fluide, transparent, et pensé pour votre sérénité.
+            De votre premier appel jusqu&apos;à la remise des clés — un parcours fluide, transparent, et pensé pour votre sérénité.
           </p>
         </div>
 
-        {/* ── Desktop: wave timeline ── */}
+        {/* Desktop Wave */}
         <div className="hidden md:block">
-          {/* SVG Wave connecting the 3 dots */}
           <div className="relative w-full" style={{ height: 520 }}>
             <svg
               viewBox="0 0 900 200"
@@ -227,7 +225,6 @@ export default function HowItWorks() {
                   <stop offset="100%" stopColor="#f1b82d" />
                 </linearGradient>
               </defs>
-              {/* Wavy path passing through the 3 dot positions: ~150, 450, 750 */}
               <path
                 d="M 150 100 C 260 40, 340 160, 450 100 C 560 40, 640 160, 750 100"
                 fill="none"
@@ -237,19 +234,16 @@ export default function HowItWorks() {
                 strokeDasharray="6 5"
               />
             </svg>
-
-            {/* 3 columns absolutely aligned with the wave dots */}
             <div className="absolute inset-0 grid grid-cols-3">
               {steps.map((step, i) => (
-                <StepCard key={step.id} step={step} index={i} />
+                <DesktopStepCard key={step.id} step={step} index={i} />
               ))}
             </div>
           </div>
         </div>
 
-        {/* ── Mobile: vertical stack ── */}
+        {/* Mobile Vertical Stack */}
         <div className="md:hidden flex flex-col gap-8 relative">
-          {/* Vertical wavy SVG */}
           <div className="absolute left-7 top-7 bottom-7 w-8 pointer-events-none">
             <svg
               viewBox="0 0 32 600"
@@ -274,50 +268,9 @@ export default function HowItWorks() {
               />
             </svg>
           </div>
-
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            const mobileRef = useRef<HTMLDivElement>(null);
-            const mobileVisible = useInView(mobileRef as React.RefObject<HTMLElement>, i * 180);
-
-            return (
-              <div
-                key={step.id}
-                ref={mobileRef}
-                className="flex items-start gap-5 pl-1"
-                style={{
-                  opacity: mobileVisible ? 1 : 0,
-                  transform: mobileVisible ? "translateX(0)" : "translateX(-16px)",
-                  transition: "opacity 0.65s ease, transform 0.65s cubic-bezier(0.22,1,0.36,1)",
-                }}
-              >
-                {/* Dot */}
-                <div
-                  className="shrink-0 w-14 h-14 rounded-full flex items-center justify-center shadow-md ring-4 ring-white z-10"
-                  style={{ background: step.accent }}
-                >
-                  <Icon size={22} strokeWidth={1.8} style={{ color: step.accentText }} />
-                </div>
-
-                {/* Card */}
-                <div className="flex-1 bg-white rounded-[20px] p-5 border border-[#e5edd9] shadow-[0_2px_16px_rgba(31,48,33,0.08)]">
-                  <span
-                    className="inline-block text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-3"
-                    style={{
-                      background: `${step.accent}22`,
-                      color: step.accentText === "#ffffff" ? step.accent : step.accentText,
-                    }}
-                  >
-                    {step.label}
-                  </span>
-                  <h3 className="text-base font-extrabold text-[#1f3021] mb-2">{step.title}</h3>
-                  <div className="w-7 h-[2px] rounded-full mb-2.5" style={{ background: step.accent }} />
-                  <p className="text-sm text-[#3d5040] leading-relaxed mb-3">{step.description}</p>
-                  <span className="text-[10px] font-bold text-[#4f6452]">✓ {step.tag}</span>
-                </div>
-              </div>
-            );
-          })}
+          {steps.map((step, i) => (
+            <MobileStepCard key={step.id} step={step} index={i} />
+          ))}
         </div>
       </div>
     </section>

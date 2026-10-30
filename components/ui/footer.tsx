@@ -1,5 +1,13 @@
 import Link from "next/link";
 
+const FOOTER_LINKS = [
+  { href: "/services", label: "Nos services & réalisations" },
+  { href: "/#avis", label: "Avis clients" },
+  { href: "/#contact", label: "Demande de devis" },
+  { href: "/#contact", label: "Contact" },
+  { href: "/keystatic", label: "Espace admin", muted: true },
+];
+
 export default function Footer() {
   return (
     <footer className="w-full bg-white border-t border-[#d6e2cf] pt-12 pb-16 px-4 sm:px-6">
@@ -8,8 +16,7 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-sm text-[#1f3021] mb-3">Multitâche</h3>
           <p className="text-xs text-[#4f6452] leading-relaxed max-w-xs">
-            Plomberie, électricité, peinture et climatisation à Villard-Bonnot et dans tout le
-            Grésivaudan.
+            Plomberie, électricité, peinture et climatisation à Villard-Bonnot et dans tout le Grésivaudan.
           </p>
         </div>
 
@@ -24,10 +31,7 @@ export default function Footer() {
               </a>
             </p>
             <p>
-              <a
-                href="mailto:contact@multitache.com"
-                className="hover:text-[#2563B0] transition-colors"
-              >
+              <a href="mailto:contact@multitache.com" className="hover:text-[#2563B0] transition-colors">
                 contact@multitache.com
               </a>
             </p>
@@ -38,34 +42,16 @@ export default function Footer() {
         <div>
           <h3 className="font-bold text-sm text-[#1f3021] mb-3">Navigation</h3>
           <ul className="space-y-1 text-xs text-[#4f6452]">
-            <li>
-              <Link href="#renovations" className="hover:text-[#2563B0] transition-colors">
-                Nos services
-              </Link>
-            </li>
-            <li>
-              <Link href="#avis" className="hover:text-[#2563B0] transition-colors">
-                Avis clients
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" className="hover:text-[#2563B0] transition-colors">
-                Demande de devis
-              </Link>
-            </li>
-            <li>
-              <Link href="#contact" className="hover:text-[#2563B0] transition-colors">
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/keystatic"
-                className="hover:text-[#2563B0] transition-colors text-neutral-400"
-              >
-                Espace admin
-              </Link>
-            </li>
+            {FOOTER_LINKS.map(({ href, label, muted }) => (
+              <li key={label}>
+                <Link
+                  href={href}
+                  className={`hover:text-[#2563B0] transition-colors ${muted ? "text-neutral-400" : ""}`}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
